@@ -1,3 +1,4 @@
+mod sh;
 use std::mem;
 
 const MEANING_OF_LIFE:u8 = 42; // no fixed address
@@ -102,4 +103,5 @@ fn main() {
     operators();
     scope_and_shadowing();
     constants();
+    sh::stack_and_heap();
 }
