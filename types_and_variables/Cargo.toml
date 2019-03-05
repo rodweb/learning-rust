@@ -1,0 +1,7 @@
+[package]
+name = "types_and_variables"
+version = "0.1.0"
+authors = ["Rodrigo Campos <rod.apd@gmail.com>"]
+edition = "2018"
+
+[dependencies]
