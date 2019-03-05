@@ -1,5 +1,16 @@
 use std::mem;
 
+const MEANING_OF_LIFE:u8 = 42; // no fixed address
+
+// static mut is unsafe
+static Z:i32 = 123;
+
+fn constants() {
+    println!("meaning of life is {}", MEANING_OF_LIFE);
+
+    println!("static Z = {}", Z);
+}
+
 fn scope_and_shadowing() {
     println!("\nScope and shadowing:");
     let a = 123;
@@ -90,4 +101,5 @@ fn main() {
     declarations();
     operators();
     scope_and_shadowing();
+    constants();
 }
