@@ -1,5 +1,20 @@
 use std::mem;
 
+fn scope_and_shadowing() {
+    println!("\nScope and shadowing:");
+    let a = 123;
+
+    {
+        let b = 456;
+        println!("inside, b = {}", b);
+
+        let a = 777;
+        println!("inside, a = {}", a);
+    }
+
+    println!("outer, a = {}", a);
+}
+
 fn operators() {
     // arithmetic
     let mut a = 2+3*4;
@@ -74,4 +89,5 @@ fn declarations() {
 fn main() {
     declarations();
     operators();
+    scope_and_shadowing();
 }
