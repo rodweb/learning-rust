@@ -1,6 +1,8 @@
 #![allow(unused_variables)]
 #![allow(dead_code)]
 
+use std::mem;
+
 struct Point {
     x:f64,
     y:f64,
@@ -62,8 +64,47 @@ fn option() {
     if let Some(z) = result { println!("z = {}", z); }
 }
 
+fn array() {
+  let mut a:[i32;5] = [1,2,3,4,5];
+
+  println!("a has {} elements, first is {}", a.len(), a[0]);
+
+  a[0] = 321;
+  //a[0] = 1;
+
+  println!("{:?}", a); // print whole array
+
+  if a != [1,2,3,4,5] {
+    println!("does not match");
+  }
+
+  let b = [1; 10]; // b.len() == 10
+
+  for i in 0..b.len() {
+    println!("{}", b[i]);
+  }
+
+  println!("b took up {} bytes", mem::size_of_val(&b));
+
+  let mtx:[[f32;3]; 2] = [
+    [1.0, 0.0, 0.0],
+    [0.0, 2.0, 0.0],
+  ];
+
+  println!("{:?}", mtx);
+
+  for i in 0..mtx.len() {
+    for j in 0..mtx[i].len() {
+      if i == j {
+        println!("[{}][{}] = {}", i, j, mtx[i][j]);
+      }
+    }
+  }
+}
+
 fn main() {
     structures();
     enums();
     option();
+    array();
 }
