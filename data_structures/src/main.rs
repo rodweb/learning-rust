@@ -102,9 +102,43 @@ fn array() {
   }
 }
 
+fn vectors() {
+    let mut a = Vec::new();
+    a.push(1);
+    a.push(2);
+    a.push(3);
+
+    println!("a = {:?}", a);
+    println!("a[0] = {}", a[0]);
+
+    // must be usize if used as an index
+    let idx:usize = 0;
+    a[idx] = 312;
+    println!("a[0] = {}", a[idx]);
+
+    match a.get(3) { // option
+        Some(x) => println!("a[3] = {}", x),
+        None => println!("no such element")
+    }
+
+    for x in &a { println!("{}", x); }
+
+    a.push(44);
+    println!("{:?}", a);
+
+    let last_elem = a.pop(); // option
+
+    println!("last elem is {:?}, a = {:?}", last_elem, a);
+
+    while let Some(x) = a.pop() {
+        println!("{}", x);
+    }
+}
+
 fn main() {
     structures();
     enums();
     option();
     array();
+    vectors();
 }
