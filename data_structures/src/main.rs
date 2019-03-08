@@ -135,10 +135,60 @@ fn vectors() {
     }
 }
 
+fn use_slice(slice: &mut[i32]) {
+    println!("first elem = {}, len = {}", slice[0], slice.len());
+    slice[0] = 1234;
+}
+
+fn slices() {
+    println!("\nSlices:");
+    let mut data = [1,2,3,4,5];
+
+    use_slice(&mut data[1..4]);
+    println!("{:?}", data);
+}
+
+fn strings() {
+    println!("\nStrings:");
+
+    // utf-8
+    let s:&'static str = "hello there!"; // &str = string slice
+
+    for c in s.chars() { // s.chars().rev()
+        println!("{}", c);
+    }
+
+    if let Some(first_char) = s.chars().nth(0) {
+        println!("first char is {}", first_char);
+    }
+
+    // heap String
+    let mut letters = String::new();
+    let mut a = 'a' as u8;
+    while a <= ('z' as u8) {
+        letters.push(a as char);
+        letters.push_str(",");
+        a += 1;
+    }
+
+    println!("{}", letters);
+
+    let u:&str = &letters;
+
+    // let z = letters + &letters;
+    let mut abc = "hello world".to_string();
+    abc.remove(0);
+    abc.push_str("!!!");
+
+    println!("{}", abc.replace("ello", "goodbye"));
+}
+
 fn main() {
     structures();
     enums();
     option();
     array();
     vectors();
+    slices();
+    strings();
 }
